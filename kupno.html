@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kup pakiet treningowy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        background: #25b14b;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-shadow: 0 0 6px black;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 42px;
+        margin-top: 30px;
+        font-weight: 900;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: 30px;
+        background: rgba(0,0,0,0.25);
+        border: 3px solid white;
+        border-radius: 20px;
+        padding: 25px;
+    }
+
+    .label {
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 25px;
+    }
+
+    /* PRZYCISK DALEJ */
+    .next-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: #ffcc00;
+        color: black;
+        padding: 15px 0;
+        border-radius: 12px;
+        font-size: 26px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 10px black;
+        margin-top: 10px;
+    }
+
+    .next-btn:hover {
+        background: #ffe066;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Wybierz swój pakiet</h1>
+
+<div class="container">
+
+    <div class="label">Wybierz pakiet treningowy:</div>
+
+    <select>
+        <option>Start – 99 zł / miesiąc</option>
+        <option>Pro – 199 zł / miesiąc</option>
+        <option>Elite – 299 zł / miesiąc</option>
+    </select>
+
+    <a class="next-btn" href="pozycje.html">Przejdź dalej</a>
+
+</div>
+
+</body>
+</html>
