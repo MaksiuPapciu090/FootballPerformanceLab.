@@ -47,23 +47,23 @@
         margin-bottom: 25px;
     }
 
-    /* PRZYCISK DALEJ */
-    .next-btn {
+    /* PRZYCISKI PŁATNOŚCI */
+    .pay-btn {
         display: block;
         width: 100%;
-        text-align: center;
         background: #ffcc00;
         color: black;
         padding: 15px 0;
         border-radius: 12px;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: bold;
         text-decoration: none;
+        text-align: center;
         box-shadow: 0 0 10px black;
-        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
-    .next-btn:hover {
+    .pay-btn:hover {
         background: #ffe066;
     }
 </style>
@@ -83,7 +83,13 @@
         <option>Elite – 299 zł / miesiąc</option>
     </select>
 
-    <a class="next-btn" href="pozycje.html">Przejdź dalej</a>
+    <div class="label">Wybierz metodę płatności:</div>
+
+    <a class="pay-btn">BLIK</a>
+    <a class="pay-btn">Karta płatnicza</a>
+    <a class="pay-btn">Przelew bankowy</a>
+    <a class="pay-btn">PayPal</a>
+    <a class="pay-btn" href="pozycje.html">Gotówka na treningu</a>
 
 </div>
 
