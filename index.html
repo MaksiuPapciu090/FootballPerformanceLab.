@@ -8,60 +8,44 @@
 <style>
     body {
         margin: 0;
-        background: #25b14b;
+        background: #25b14b; /* zielone tło murawy */
         font-family: Arial, sans-serif;
         overflow: hidden;
     }
 
-    /* PIŁKA – białe kółko */
+    /* PIŁKA */
     .ball {
         position: absolute;
         top: 25px;
         left: 25px;
         width: 140px;
-        height: 140px;
-        background: white;
-        border-radius: 50%;
-        border: 6px solid black;
     }
 
-    /* MEDAL – pomarańczowy */
+    /* MEDAL */
     .medal {
         position: absolute;
         top: 25px;
         right: 25px;
-        width: 110px;
-        height: 150px;
-        background: orange;
-        border-radius: 20px;
-        border: 4px solid white;
+        width: 140px;
     }
 
-    /* BUTY – czarne */
+    /* KORKI */
     .shoes {
         position: absolute;
         bottom: 25px;
         left: 25px;
-        width: 190px;
-        height: 90px;
-        background: black;
-        border-radius: 20px;
-        border: 4px solid white;
+        width: 200px;
     }
 
-    /* BRAMKARZ – niebieski */
+    /* BRAMKARZ */
     .keeper {
         position: absolute;
         bottom: 25px;
         right: 25px;
-        width: 220px;
-        height: 120px;
-        background: #1e90ff;
-        border-radius: 20px;
-        border: 4px solid white;
+        width: 230px;
     }
 
-    /* BOISKO – zielony prostokąt na środku */
+    /* BOISKO NA ŚRODKU */
     .field {
         position: absolute;
         top: 120px;
@@ -122,17 +106,20 @@
 
 <body>
 
-<div class="ball"></div>
-<div class="medal"></div>
-<div class="shoes"></div>
-<div class="keeper"></div>
+<!-- OBRAZKI -->
+<img src="pilka.png" class="ball">
+<img src="medal.png" class="medal">
+<img src="korki.png" class="shoes">
+<img src="bramkarz.png" class="keeper">
+
+<!-- BOISKO -->
 <div class="field"></div>
 
+<!-- TEKSTY + PRZYCISK -->
 <div class="center-wrapper">
     <div class="main-title">Witaj w moim centrum treningowym</div>
     <div class="sub-title">To tutaj nauczymy Ciebie grać w piłkę</div>
 
-    <!-- PRAWDZIWY PRZYCISK -->
     <a class="btn" href="strona2.html">Przejdź dalej</a>
 </div>
 
