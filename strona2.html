@@ -8,136 +8,230 @@
 <style>
     body {
         margin: 0;
-        background: #25b14b;
         font-family: Arial, sans-serif;
         color: white;
-        text-shadow: 0 0 6px black;
+        background: radial-gradient(circle at top, #12b85d, #020b08 55%, #000000 100%);
+        overflow-x: hidden;
     }
 
     h1 {
         text-align: center;
-        font-size: 42px;
-        margin-top: 30px;
+        font-size: 32px;
+        margin: 28px 10px 4px;
         font-weight: 900;
+        text-shadow: 0 0 18px rgba(0,0,0,0.8);
+        animation: fadeInDown 0.7s ease-out forwards;
     }
 
-    .container {
-        width: 90%;
-        max-width: 900px;
-        margin: 0 auto;
-        margin-top: 30px;
+    .sub {
+        text-align: center;
+        font-size: 15px;
+        opacity: 0.9;
+        margin-bottom: 12px;
+        animation: fadeIn 0.7s ease-out forwards 0.2s;
     }
 
-    .box {
-        background: rgba(0,0,0,0.25);
-        border: 3px solid white;
+    .cards {
+        width: 92%;
+        max-width: 880px;
+        margin: 20px auto 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+        animation: fadeIn 0.7s ease-out forwards 0.3s;
+    }
+
+    .card {
+        background: linear-gradient(145deg, rgba(0,0,0,0.85), rgba(0,0,0,0.55));
         border-radius: 20px;
-        padding: 25px;
-        margin-bottom: 35px;
+        padding: 16px 14px 18px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        position: relative;
+        overflow: hidden;
+        transform: translateY(8px);
+        transition: 0.18s;
+    }
+
+    .card:hover {
+        transform: translateY(0) scale(1.02);
+        box-shadow: 0 22px 45px rgba(0,0,0,0.9);
+    }
+
+    .badge {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.4);
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    .badge-pro {
+        border-color: #32ff7e;
+        color: #32ff7e;
+    }
+
+    .badge-elite {
+        border-color: #ffd700;
+        color: #ffd700;
     }
 
     .title {
-        font-size: 32px;
+        font-size: 20px;
         font-weight: 900;
-        margin-bottom: 10px;
+        margin-bottom: 4px;
     }
 
     .price {
-        font-size: 26px;
-        margin-bottom: 15px;
-        color: #ffcc00;
-        font-weight: bold;
+        font-size: 22px;
+        font-weight: 900;
+        margin-bottom: 6px;
+        color: #32ff7e;
     }
 
     .desc {
-        font-size: 20px;
-        margin-bottom: 15px;
+        font-size: 13px;
+        opacity: 0.9;
+        margin-bottom: 10px;
     }
 
-    ul {
-        font-size: 20px;
-        margin-bottom: 20px;
+    .feat {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-left: 10px;
     }
 
-    ul li {
-        margin-bottom: 6px;
+    .feat::before {
+        content: "• ";
+        color: #32ff7e;
     }
 
-    /* PRZYCISK KUP TERAZ */
-    .buy-btn {
+    .choose-btn {
+        margin-top: 12px;
         display: inline-block;
-        background: #ffcc00;
-        color: black;
-        padding: 12px 30px;
-        border-radius: 12px;
-        font-size: 22px;
-        font-weight: bold;
+        padding: 10px 22px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #32ff7e, #12b85d);
+        color: #020c06;
+        font-size: 14px;
+        font-weight: 900;
+        cursor: pointer;
         text-decoration: none;
-        box-shadow: 0 0 10px black;
-        margin-top: 10px;
+        box-shadow: 0 0 16px rgba(50,255,126,0.8);
+        position: relative;
+        overflow: hidden;
+        transition: 0.18s;
     }
 
-    .buy-btn:hover {
-        background: #ffe066;
+    .choose-btn::before {
+        content: "";
+        position: absolute;
+        left: -40%;
+        top: 0;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+        transform: translateX(-140%);
+        transition: transform 0.35s;
+    }
+
+    .choose-btn:hover::before {
+        transform: translateX(260%);
+    }
+
+    .choose-btn:hover {
+        transform: translateY(-1px) scale(1.03);
+        box-shadow: 0 0 22px rgba(50,255,126,1);
+    }
+
+    .corner-glow {
+        position: absolute;
+        right: -40px;
+        bottom: -40px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(50,255,126,0.7), transparent 60%);
+        opacity: 0.5;
+    }
+
+    .corner-gold {
+        background: radial-gradient(circle, rgba(255,215,0,0.7), transparent 60%);
+    }
+
+    .back {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 13px;
+    }
+
+    .back a {
+        color: #32ff7e;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 </style>
 </head>
 
 <body>
 
-<h1>Wybierz pakiet</h1>
+<h1>Wybierz swój pakiet</h1>
+<div class="sub">Najpierw pakiet, potem płatność, potem wybór pozycji i ćwiczenia.</div>
 
-<div class="container">
+<div class="back">
+    <a href="index.html">← Wróć na stronę główną</a>
+</div>
 
-    <!-- START -->
-    <div class="box">
-        <div class="title">⚽ Start – idealny dla początkujących</div>
-        <div class="price">Cena: 99 zł / miesiąc</div>
-        <div class="desc">👉 Dla tych, którzy zaczynają przygodę z piłką.</div>
+<div class="cards">
 
-        <ul>
-            <li>✔ 2 treningi tygodniowo</li>
-            <li>✔ Podstawowe ćwiczenia techniczne</li>
-            <li>✔ Nauka kontroli piłki i podań</li>
-            <li>✔ Wsparcie trenera</li>
-            <li>✔ Dostęp do materiałów wideo</li>
-        </ul>
-
-        <a class="buy-btn" href="kupno.html">Kup teraz</a>
+    <div class="card">
+        <div class="badge">Start</div>
+        <div class="title">START</div>
+        <div class="price">99 zł / miesiąc</div>
+        <div class="desc">Idealny, żeby zacząć – podstawowy plan i dostęp do ćwiczeń.</div>
+        <div class="feat">Dostęp do planów dla wszystkich pozycji</div>
+        <div class="feat">Podstawowe ćwiczenia techniczne</div>
+        <div class="feat">Video–wytłumaczenia</div>
+        <a class="choose-btn" href="kupno.html">WYBIERZ START</a>
+        <div class="corner-glow"></div>
     </div>
 
-    <!-- PRO -->
-    <div class="box">
-        <div class="title">⚽ Pro – dla graczy, którzy chcą się rozwijać</div>
-        <div class="price">Cena: 199 zł / miesiąc</div>
-        <div class="desc">👉 Dla zawodników z doświadczeniem, chcących podnieść poziom gry.</div>
-
-        <ul>
-            <li>✔ 4 treningi tygodniowo</li>
-            <li>✔ Analiza techniki i taktyki</li>
-            <li>✔ Indywidualne wskazówki trenera</li>
-            <li>✔ Treningi szybkości i kondycji</li>
-            <li>✔ Dostęp do planów i filmów instruktażowych</li>
-        </ul>
-
-        <a class="buy-btn" href="kupno.html">Kup teraz</a>
+    <div class="card">
+        <div class="badge badge-pro">Najczęściej wybierany</div>
+        <div class="title">PRO</div>
+        <div class="price">199 zł / miesiąc</div>
+        <div class="desc">Dla tych, którzy chcą wejść na wyższy poziom i cisnąć regularnie.</div>
+        <div class="feat">Więcej ćwiczeń pozycyjnych</div>
+        <div class="feat">Dodatkowe warianty treningów</div>
+        <div class="feat">Dostęp do aktualizacji planów</div>
+        <a class="choose-btn" href="kupno.html">WYBIERZ PRO</a>
+        <div class="corner-glow"></div>
     </div>
 
-    <!-- ELITE -->
-    <div class="box">
-        <div class="title">⚽ Elite – trening jak profesjonalista</div>
-        <div class="price">Cena: 299 zł / miesiąc</div>
-        <div class="desc">🌟 Najbardziej zaawansowany pakiet dla przyszłych liderów drużyny.</div>
-
-        <ul>
-            <li>✔ 6 treningów tygodniowo</li>
-            <li>✔ Indywidualne sesje 1-na-1</li>
-            <li>✔ Indywidualna analiza techniki</li>
-            <li>✔ Analiza wideo z Twoich meczów</li>
-            <li>✔ Stały kontakt z trenerem</li>
-        </ul>
-
-        <a class="buy-btn" href="kupno.html">Kup teraz</a>
+    <div class="card">
+        <div class="badge badge-elite">ELITE</div>
+        <div class="title">ELITE</div>
+        <div class="price">299 zł / miesiąc</div>
+        <div class="desc">Pełna wersja – maksimum ćwiczeń i pełny dostęp do systemu.</div>
+        <div class="feat">Pełne 90+ ćwiczeń na pozycję</div>
+        <div class="feat">Warianty PRO + ELITE</div>
+        <div class="feat">Priorytetowe aktualizacje</div>
+        <a class="choose-btn" href="kupno.html">WYBIERZ ELITE</a>
+        <div class="corner-glow corner-gold"></div>
     </div>
 
 </div>
