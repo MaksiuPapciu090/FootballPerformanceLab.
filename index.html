@@ -2,121 +2,244 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Strona 1 - Centrum treningowe</title>
+<title>Trening piłkarski – Start</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+    :root {
+        --greenNeon: #32ff7e;
+        --greenDark: #01522a;
+        --gold: #ffd700;
+        --bg1: #02060a;
+        --bg2: #042515;
+    }
+
     body {
         margin: 0;
-        background: #25b14b;
         font-family: Arial, sans-serif;
-        overflow: hidden;
-    }
-
-    /* PIŁKA */
-    .ball {
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        width: 140px;
-    }
-
-    /* MEDAL */
-    .medal {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        width: 140px;
-    }
-
-    /* KORKI */
-    .shoes {
-        position: absolute;
-        bottom: 25px;
-        left: 25px;
-        width: 200px;
-    }
-
-    /* BRAMKARZ */
-    .keeper {
-        position: absolute;
-        bottom: 25px;
-        right: 25px;
-        width: 230px;
-    }
-
-    /* BOISKO PNG NA ŚRODKU */
-    .field-img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 420px;
-        transform: translate(-50%, -50%);
-    }
-
-    /* TEKSTY NA ŚRODKU */
-    .center-wrapper {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -10%);
-        text-align: center;
-        width: 100%;
-        max-width: 900px;
         color: white;
-        text-shadow: 0 0 6px black;
+        background: radial-gradient(circle at top, #12b85d, #020b08 55%, #000000 100%);
+        overflow-x: hidden;
     }
 
-    .main-title {
-        font-size: 40px;
+    .top-bar {
+        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out forwards 0.2s;
+    }
+
+    .logo {
         font-weight: 900;
-        color: red;
-        margin-bottom: 15px;
+        letter-spacing: 1px;
+        color: var(--greenNeon);
     }
 
-    .sub-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #1e90ff;
-        margin-bottom: 25px;
+    .tag {
+        font-size: 13px;
+        opacity: 0.8;
     }
 
-    /* PRZYCISK */
-    .btn {
+    h1 {
+        text-align: center;
+        font-size: 34px;
+        margin: 40px 10px 5px;
+        font-weight: 900;
+        text-shadow: 0 0 18px rgba(0,0,0,0.8);
+        opacity: 0;
+        animation: titleDrop 0.8s ease-out forwards 0.3s;
+    }
+
+    .sub {
+        text-align: center;
+        font-size: 17px;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out forwards 0.5s;
+    }
+
+    .hero-card {
+        width: 90%;
+        max-width: 760px;
+        margin: 32px auto;
+        padding: 22px 18px 24px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.35));
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation: cardIn 0.8s ease-out forwards 0.6s;
+    }
+
+    .hero-badge {
         display: inline-block;
-        padding: 15px 35px;
-        background: #ffcc00;
-        color: black;
-        font-size: 22px;
-        font-weight: bold;
-        border-radius: 12px;
-        text-decoration: none;
-        box-shadow: 0 0 10px black;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.7);
+        border: 1px solid rgba(255,255,255,0.3);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
     }
 
-    .btn:hover {
-        background: #ffe066;
+    .hero-text-main {
+        font-size: 20px;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .hero-text-sub {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .hero-glow {
+        position: absolute;
+        right: -30px;
+        bottom: -30px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(50,255,126,0.8), transparent 60%);
+        opacity: 0.45;
+        filter: blur(2px);
+    }
+
+    .cta-wrap {
+        text-align: center;
+        margin-top: 18px;
+    }
+
+    .cta-main {
+        display: inline-block;
+        padding: 14px 40px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #32ff7e, #12b85d);
+        color: #020c06;
+        font-size: 18px;
+        font-weight: 900;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(50,255,126,0.8);
+        position: relative;
+        overflow: hidden;
+        transition: 0.18s;
+    }
+
+    .cta-main::before {
+        content: "";
+        position: absolute;
+        left: -40%;
+        top: 0;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+        transform: translateX(-120%);
+        transition: transform 0.35s;
+    }
+
+    .cta-main:hover::before {
+        transform: translateX(260%);
+    }
+
+    .cta-main:hover {
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 0 28px rgba(50,255,126,1);
+    }
+
+    .cta-sub {
+        margin-top: 8px;
+        font-size: 13px;
+        opacity: 0.8;
+    }
+
+    .stats-row {
+        width: 90%;
+        max-width: 760px;
+        margin: 0 auto 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards 0.9s;
+    }
+
+    .stat-box {
+        background: rgba(0,0,0,0.6);
+        border-radius: 16px;
+        padding: 10px 8px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.2);
+        font-size: 13px;
+    }
+
+    .stat-num {
+        font-size: 18px;
+        font-weight: 900;
+        color: var(--greenNeon);
+        margin-bottom: 2px;
+    }
+
+    @keyframes titleDrop {
+        from { opacity: 0; transform: translateY(-25px) scale(0.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cardIn {
+        from { opacity: 0; transform: translateY(35px) scale(0.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
     }
 </style>
 </head>
 
 <body>
 
-<!-- OBRAZKI -->
-<img src="pilka.png" class="ball">
-<img src="medal.png" class="medal">
-<img src="korki.png" class="shoes">
-<img src="bramkarz.png" class="keeper">
+<div class="top-bar">
+    <div class="logo">ELITE TRAINING</div>
+    <div class="tag">online • indywidualnie • PRO</div>
+</div>
 
-<!-- BOISKO PNG -->
-<img src="boisko.png" class="field-img">
+<h1>Wejdź na poziom PRO</h1>
+<div class="sub">Twój osobisty system treningu piłkarskiego – jak z najlepszych akademii.</div>
 
-<!-- TEKSTY + PRZYCISK -->
-<div class="center-wrapper">
-    <div class="main-title">Witaj w moim centrum treningowym</div>
-    <div class="sub-title">To tutaj nauczymy Ciebie grać w piłkę</div>
+<div class="hero-card">
+    <div class="hero-badge">Nowy sezon • Limitowana pula miejsc</div>
+    <div class="hero-text-main">Plan treningowy dopasowany do Twojej pozycji.</div>
+    <div class="hero-text-sub">
+        Wybierz pakiet, metodę płatności, pozycję na boisku – a potem wchodzisz w ćwiczenia krok po kroku.
+    </div>
+    <div class="cta-wrap">
+        <a href="pakiety.html" class="cta-main">ZACZNIJ TRENING</a>
+        <div class="cta-sub">Klikasz i lecisz do wyboru pakietu.</div>
+    </div>
+    <div class="hero-glow"></div>
+</div>
 
-    <a class="btn" href="strona2.html">Przejdź dalej</a>
+<div class="stats-row">
+    <div class="stat-box">
+        <div class="stat-num">+90</div>
+        Ćwiczeń na pozycję
+    </div>
+    <div class="stat-box">
+        <div class="stat-num">5</div>
+        Pozycji do wyboru
+    </div>
+    <div class="stat-box">
+        <div class="stat-num">24/7</div>
+        Dostęp do materiałów
+    </div>
 </div>
 
 </body>
