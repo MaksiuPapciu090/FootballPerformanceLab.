@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Wybierz pozycję</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        background: #25b14b;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-shadow: 0 0 6px black;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 48px;
+        margin-top: 30px;
+        font-weight: 900;
+    }
+
+    /* PIŁKA LEWA STRONA */
+    .ball {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        width: 220px;
+    }
+
+    /* PIŁKARZ PRAWA STRONA */
+    .player {
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        width: 260px;
+    }
+
+    /* ŚRODKOWE MENU */
+    .container {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+        background: rgba(0,0,0,0.25);
+        border: 3px solid white;
+        border-radius: 20px;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .pos-btn {
+        display: block;
+        width: 100%;
+        background: #ffcc00;
+        color: black;
+        padding: 15px 0;
+        border-radius: 12px;
+        font-size: 28px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 0 10px black;
+        margin-bottom: 15px;
+    }
+
+    .pos-btn:hover {
+        background: #ffe066;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>WYBIERZ SWOJĄ POZYCJĘ</h1>
+
+<!-- PIŁKA -->
+<img src="pilka.png" class="ball">
+
+<!-- PIŁKARZ -->
+<img src="pilkarz.png" class="player">
+
+<!-- MENU POZYCJI -->
+<div class="container">
+    <a class="pos-btn" href="bramkarz.html">BRAMKARZ</a>
+    <a class="pos-btn" href="obronca.html">OBROŃCA</a>
+    <a class="pos-btn" href="pomocnik.html">POMOCNIK</a>
+    <a class="pos-btn" href="skrzydlowy.html">SKRZYDŁOWY</a>
+    <a class="pos-btn" href="napastnik.html">NAPASTNIK</a>
+</div>
+
+</body>
+</html>
