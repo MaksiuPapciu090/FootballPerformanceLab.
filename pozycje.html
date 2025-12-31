@@ -8,65 +8,126 @@
 <style>
     body {
         margin: 0;
-        background: #25b14b;
+        background: radial-gradient(circle at top, #32e06b, #0b5b26 60%, #041c0f 100%);
         font-family: Arial, sans-serif;
         color: white;
-        text-shadow: 0 0 6px black;
+        overflow-x: hidden;
     }
 
     h1 {
         text-align: center;
-        font-size: 48px;
-        margin-top: 30px;
+        font-size: 40px;
+        margin-top: 25px;
         font-weight: 900;
+        letter-spacing: 1px;
+        text-shadow: 0 0 18px rgba(0,0,0,0.7);
+        animation: fadeInDown 0.7s ease-out forwards;
     }
 
-    /* PIŁKA LEWA STRONA */
+    .sub {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 18px;
+        opacity: 0.9;
+    }
+
     .ball {
         position: absolute;
-        top: 120px;
-        left: 20px;
-        width: 220px;
+        top: 110px;
+        left: 8px;
+        width: 160px;
+        animation: ballIn 0.9s ease-out forwards;
     }
 
-    /* PIŁKARZ PRAWA STRONA */
     .player {
         position: absolute;
-        top: 80px;
-        right: 20px;
-        width: 260px;
+        top: 70px;
+        right: -10px;
+        width: 220px;
+        animation: playerIn 0.9s ease-out forwards;
     }
 
-    /* ŚRODKOWE MENU */
     .container {
         width: 90%;
-        max-width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-        background: rgba(0,0,0,0.25);
-        border: 3px solid white;
-        border-radius: 20px;
-        padding: 25px;
-        text-align: center;
+        max-width: 430px;
+        margin: 80px auto 40px;
+        background: rgba(0,0,0,0.40);
+        border-radius: 24px;
+        padding: 20px 18px 22px;
+        border: 1px solid rgba(255,255,255,0.35);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+        backdrop-filter: blur(10px);
+        animation: scaleIn 0.8s ease-out forwards;
     }
 
     .pos-btn {
         display: block;
         width: 100%;
-        background: #ffcc00;
-        color: black;
-        padding: 15px 0;
-        border-radius: 12px;
-        font-size: 28px;
+        background: linear-gradient(135deg, #ffffff, #e6e6e6);
+        color: #111;
+        padding: 12px 0;
+        border-radius: 16px;
+        font-size: 22px;
         font-weight: bold;
         text-decoration: none;
         text-align: center;
-        box-shadow: 0 0 10px black;
-        margin-bottom: 15px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.6);
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.18s;
+    }
+
+    .pos-btn::before {
+        content: "";
+        position: absolute;
+        left: -30%;
+        top: 0;
+        width: 30%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.18), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.35s;
+    }
+
+    .pos-btn:hover::before {
+        transform: translateX(260%);
     }
 
     .pos-btn:hover {
-        background: #ffe066;
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    .pos-btn span {
+        position: relative;
+        z-index: 2;
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ballIn {
+        from { opacity: 0; transform: translateX(-60px) rotate(-25deg); }
+        to { opacity: 1; transform: translateX(0) rotate(0deg); }
+    }
+
+    @keyframes playerIn {
+        from { opacity: 0; transform: translateX(80px) translateY(-15px) scale(0.9); }
+        to { opacity: 1; transform: translateX(0) translateY(0) scale(1); }
+    }
+
+    @keyframes scaleIn {
+        from { opacity: 0; transform: translateY(35px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 600px) {
+        .ball { width: 120px; top: 120px; }
+        .player { width: 180px; top: 90px; }
+        .container { margin-top: 120px; }
     }
 </style>
 </head>
@@ -74,20 +135,17 @@
 <body>
 
 <h1>WYBIERZ SWOJĄ POZYCJĘ</h1>
+<div class="sub">Kliknij pozycję, aby przejść do ćwiczeń</div>
 
-<!-- PIŁKA -->
 <img src="pilka.png" class="ball">
-
-<!-- PIŁKARZ -->
 <img src="pilkarz.png" class="player">
 
-<!-- MENU POZYCJI -->
 <div class="container">
-    <a class="pos-btn" href="bramkarz.html">BRAMKARZ</a>
-    <a class="pos-btn" href="obronca.html">OBROŃCA</a>
-    <a class="pos-btn" href="pomocnik.html">POMOCNIK</a>
-    <a class="pos-btn" href="skrzydlowy.html">SKRZYDŁOWY</a>
-    <a class="pos-btn" href="napastnik.html">NAPASTNIK</a>
+    <a class="pos-btn" href="bramkarz.html"><span>BRAMKARZ</span></a>
+    <a class="pos-btn" href="obronca.html"><span>OBROŃCA</span></a>
+    <a class="pos-btn" href="pomocnik.html"><span>POMOCNIK</span></a>
+    <a class="pos-btn" href="skrzydlowy.html"><span>SKRZYDŁOWY</span></a>
+    <a class="pos-btn" href="napastnik.html"><span>NAPASTNIK</span></a>
 </div>
 
 </body>
