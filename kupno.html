@@ -2,20 +2,20 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Płatność</title>
+<title>Kup Pakiet – ULTRA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
     :root {
+        --neon: #32ff7e;
+        --dark: #020b08;
         --gold1: #ffd700;
         --gold2: #ffb300;
-        --green1: #1e8f3c;
-        --green2: #25b14b;
     }
 
     body {
         margin: 0;
-        background: radial-gradient(circle at top, #32e06b, #0b5b26 60%, #042512 100%);
+        background: radial-gradient(circle at top, #19c96b, #04150c 55%, #000000 100%);
         font-family: Arial, sans-serif;
         color: white;
         overflow-x: hidden;
@@ -23,148 +23,123 @@
 
     h1 {
         text-align: center;
-        font-size: 38px;
-        margin-top: 25px;
+        font-size: 40px;
+        margin-top: 30px;
         font-weight: 900;
         letter-spacing: 1px;
-        animation: titleDrop 0.8s ease-out forwards;
-        text-shadow: 0 0 18px rgba(0,0,0,0.7);
+        text-shadow: 0 0 25px rgba(0,0,0,0.9);
+        animation: fadeInDown 0.6s ease-out forwards;
     }
 
-    .glow-line {
-        width: 140px;
-        height: 4px;
-        margin: 8px auto 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, transparent, var(--gold1), transparent);
-        box-shadow: 0 0 16px rgba(255,215,0,0.7);
-        animation: linePulse 1.8s infinite alternate;
+    .sub {
+        text-align: center;
+        opacity: 0.9;
+        margin-bottom: 20px;
+        font-size: 16px;
+        animation: fadeIn 0.6s ease-out forwards 0.15s;
     }
 
     .container {
         width: 92%;
-        max-width: 720px;
-        margin: 35px auto 40px;
-        padding: 25px 22px 30px;
-        border-radius: 25px;
-        background: rgba(255,255,255,0.06);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255,255,255,0.35);
-        box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-        animation: cardIn 0.9s ease-out forwards;
+        max-width: 900px;
+        margin: 20px auto 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
     }
 
-    .label {
-        font-size: 22px;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    select, input {
-        width: 100%;
-        padding: 14px;
-        font-size: 18px;
-        border-radius: 12px;
-        border: none;
-        margin-bottom: 18px;
-        background: rgba(255,255,255,0.9);
-        outline: none;
-        transition: box-shadow 0.15s, transform 0.15s;
-    }
-
-    select:focus, input:focus {
-        box-shadow: 0 0 12px rgba(255,215,0,0.7);
-        transform: translateY(-1px);
-    }
-
-    .pay-btn {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, var(--gold1), var(--gold2));
-        color: black;
-        padding: 14px 0;
-        border-radius: 999px;
-        font-size: 22px;
-        font-weight: bold;
-        text-decoration: none;
-        text-align: center;
-        box-shadow: 0 0 18px rgba(0,0,0,0.6);
-        margin-bottom: 14px;
-        cursor: pointer;
-        border: none;
-        transition: 0.18s;
+    .card {
+        background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.55));
+        border-radius: 20px;
+        padding: 20px 18px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        backdrop-filter: blur(10px);
         position: relative;
         overflow: hidden;
+        transform: translateY(10px);
+        animation: fadeIn 0.6s ease-out forwards;
     }
 
-    .pay-btn span {
-        position: relative;
-        z-index: 2;
+    .badge {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--neon);
+        color: var(--neon);
+        display: inline-block;
+        margin-bottom: 10px;
     }
 
-    .pay-btn::before {
-        content: "";
+    .title {
+        font-size: 22px;
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+
+    .price {
+        font-size: 26px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        color: var(--neon);
+        text-shadow: 0 0 10px rgba(50,255,126,0.8);
+    }
+
+    .desc {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 12px;
+    }
+
+    .feat {
+        font-size: 13px;
+        opacity: 0.9;
+        margin-left: 10px;
+        margin-bottom: 4px;
+    }
+
+    .feat::before {
+        content: "• ";
+        color: var(--neon);
+    }
+
+    .buy-btn {
+        margin-top: 14px;
+        display: inline-block;
+        padding: 12px 22px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--gold1), var(--gold2));
+        color: black;
+        font-size: 16px;
+        font-weight: 900;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(255,215,0,0.8);
+        transition: 0.2s;
+    }
+
+    .buy-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255,215,0,1);
+    }
+
+    .glow {
         position: absolute;
-        left: -40%;
-        top: 0;
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-        transform: translateX(-100%);
-        transition: transform 0.4s;
+        right: -40px;
+        bottom: -40px;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(50,255,126,0.7), transparent 60%);
+        opacity: 0.5;
     }
 
-    .pay-btn:hover::before {
-        transform: translateX(260%);
-    }
-
-    .pay-btn:hover {
-        transform: translateY(-1px) scale(1.02);
-        box-shadow: 0 0 26px rgba(255,215,0,0.9);
-    }
-
-    .methods-row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: 5px;
-    }
-
-    .form-box {
-        background: rgba(0,0,0,0.45);
-        padding: 18px;
-        border-radius: 16px;
-        margin-top: 18px;
-        display: none;
-        animation: fadeIn 0.35s ease-out forwards;
-        border: 1px solid rgba(255,255,255,0.25);
-    }
-
-    .price-line {
-        margin-top: 5px;
-        font-size: 20px;
-        text-align: right;
-        font-weight: bold;
-    }
-
-    .price-value {
-        color: var(--gold1);
-        text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
-
-    @keyframes titleDrop {
-        from { opacity: 0; transform: translateY(-25px) scale(0.96); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes linePulse {
-        from { opacity: 0.4; transform: scaleX(0.85); }
-        to { opacity: 1; transform: scaleX(1.05); }
-    }
-
-    @keyframes cardIn {
-        from { opacity: 0; transform: translateY(40px) scale(0.97); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeIn {
@@ -176,102 +151,51 @@
 
 <body>
 
-<h1>Potwierdzenie płatności</h1>
-<div class="glow-line"></div>
+<h1>KUP PAKIET TRENINGOWY</h1>
+<div class="sub">Wybierz pakiet i przejdź do płatności</div>
 
 <div class="container">
 
-    <div class="label">Pakiet treningowy:</div>
-    <select id="pakiet" onchange="aktualizujCene()">
-        <option value="99">Start – 99 zł / miesiąc</option>
-        <option value="199">Pro – 199 zł / miesiąc</option>
-        <option value="299">Elite – 299 zł / miesiąc</option>
-    </select>
-
-    <div class="label">Kod rabatowy:</div>
-    <input id="kod" placeholder="Wpisz kod (np. MaksYTyy)">
-    <button class="pay-btn" onclick="sprawdzKod()"><span>Zastosuj kod</span></button>
-
-    <div class="price-line">
-        Do zapłaty: <span id="cena" class="price-value">99 zł</span>
+    <!-- START -->
+    <div class="card">
+        <div class="badge">Start</div>
+        <div class="title">PAKIET START</div>
+        <div class="price">99 zł</div>
+        <div class="desc">Idealny na początek. Otrzymujesz pełny Tydzień 1.</div>
+        <div class="feat">1 tydzień treningowy</div>
+        <div class="feat">Ćwiczenia dla każdej pozycji</div>
+        <div class="feat">Dostęp natychmiast</div>
+        <a href="kupno.html" class="buy-btn">KUP START</a>
+        <div class="glow"></div>
     </div>
 
-    <div class="label" style="margin-top:18px;">Metoda płatności:</div>
-
-    <div class="methods-row">
-        <button class="pay-btn" onclick="pokaz('blik')"><span>BLIK</span></button>
-        <button class="pay-btn" onclick="pokaz('karta')"><span>Karta</span></button>
-        <button class="pay-btn" onclick="pokaz('przelew')"><span>Przelew</span></button>
-        <button class="pay-btn" onclick="pokaz('paypal')"><span>PayPal</span></button>
+    <!-- PRO -->
+    <div class="card">
+        <div class="badge">Najczęściej wybierany</div>
+        <div class="title">PAKIET PRO</div>
+        <div class="price">199 zł</div>
+        <div class="desc">4 tygodnie progresu jak w akademii PRO.</div>
+        <div class="feat">Tygodnie 1–4</div>
+        <div class="feat">Więcej wariantów ćwiczeń</div>
+        <div class="feat">Dostęp do aktualizacji</div>
+        <a href="kupno.html" class="buy-btn">KUP PRO</a>
+        <div class="glow"></div>
     </div>
 
-    <div id="blik" class="form-box">
-        <div class="label">Kod BLIK:</div>
-        <input id="blikCode" placeholder="Wpisz 6-cyfrowy kod">
-        <button class="pay-btn" onclick="final()"><span>Zapłać BLIK</span></button>
-    </div>
-
-    <div id="karta" class="form-box">
-        <input placeholder="Numer karty (16 cyfr)">
-        <input placeholder="MM/RR">
-        <input placeholder="CVV">
-        <button class="pay-btn" onclick="final()"><span>Zapłać kartą</span></button>
-    </div>
-
-    <div id="przelew" class="form-box">
-        <input placeholder="Imię i nazwisko">
-        <input placeholder="Numer konta">
-        <button class="pay-btn" onclick="final()"><span>Generuj dane przelewu</span></button>
-    </div>
-
-    <div id="paypal" class="form-box">
-        <input placeholder="Email PayPal">
-        <button class="pay-btn" onclick="final()"><span>Zapłać PayPal</span></button>
+    <!-- ELITE -->
+    <div class="card">
+        <div class="badge">ELITE</div>
+        <div class="title">PAKIET ELITE</div>
+        <div class="price">299 zł</div>
+        <div class="desc">6 tygodni pracy jak w Real Madrid / Ajax / City.</div>
+        <div class="feat">Tygodnie 1–6</div>
+        <div class="feat">Pełne 90+ ćwiczeń na pozycję</div>
+        <div class="feat">Najwyższy poziom</div>
+        <a href="kupno.html" class="buy-btn">KUP ELITE</a>
+        <div class="glow"></div>
     </div>
 
 </div>
-
-<script>
-let cenaAktualna = 99;
-let rabatAktywny = false;
-
-function aktualizujCene() {
-    if (rabatAktywny) return;
-    const pakiet = document.getElementById("pakiet").value;
-    cenaAktualna = parseInt(pakiet);
-    document.getElementById("cena").innerText = cenaAktualna + " zł";
-}
-
-function pokaz(id) {
-    ["blik","karta","przelew","paypal"].forEach(x => {
-        document.getElementById(x).style.display = "none";
-    });
-    document.getElementById(id).style.display = "block";
-}
-
-function sprawdzKod() {
-    const kod = document.getElementById("kod").value;
-
-    if (kod === "MaksYTyy") {
-        rabatAktywny = true;
-        cenaAktualna = 0;
-        document.getElementById("cena").innerText = "0 zł";
-        alert("Kod poprawny! Masz dostęp za darmo.");
-        window.location.href = "pozycje.html";
-    } else {
-        alert("Niepoprawny kod");
-    }
-}
-
-function final() {
-    if (cenaAktualna === 0) {
-        alert("Dostęp już odblokowany. Przenoszę do wyboru pozycji.");
-    } else {
-        alert("Płatność zaakceptowana!");
-    }
-    window.location.href = "pozycje.html";
-}
-</script>
 
 </body>
 </html>
